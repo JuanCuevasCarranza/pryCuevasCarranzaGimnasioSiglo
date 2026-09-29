@@ -19,5 +19,15 @@ namespace pryCuevasCarranzaGimnasioSiglo
         {
 
         }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPregunta_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
