@@ -16,6 +16,13 @@ namespace pryCuevasCarranzaGimnasioSiglo
             InitializeComponent();
         }
 
+        public class Configuracion
+        {
+            // Constantes locales o de clase
+            public const double PRECIO_NATACION = 450.50;
+            public const int EDAD_MINIMA = 18;
+        }
+
         private void EstadoInicial(object sender, EventArgs e)
         {
             txtNombre.Clear();
@@ -35,8 +42,6 @@ namespace pryCuevasCarranzaGimnasioSiglo
             btnCalcular.Enabled = false; // Deshabilitado hasta que se llenen los campos obligatorios
             txtNombre.Focus();           // Deja el cursor listo para escribir
         }
-
-        // Invocación desde el evento Load del formulario (Paso 7)
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -139,5 +144,9 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
         }
 
+        private void lblCuotas_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

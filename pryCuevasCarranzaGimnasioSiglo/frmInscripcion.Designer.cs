@@ -49,13 +49,13 @@
             cboPlan = new ComboBox();
             gbxFormaDePago1 = new GroupBox();
             pictureBox3 = new PictureBox();
-            btnLimpiar = new Button();
             btnCalcular = new Button();
             lblCuotas = new Label();
             cboCuotas = new ComboBox();
             gbxFormaDePago2 = new GroupBox();
             rbtTarjeta = new RadioButton();
             rbtEfectivo = new RadioButton();
+            btnLimpiar = new Button();
             tbcMenuPrincipal = new TabControl();
             tbpDatosPersonales = new TabPage();
             tbpPlan = new TabPage();
@@ -85,7 +85,7 @@
             gbxDatosPersonales.Controls.Add(txtNombre);
             gbxDatosPersonales.Location = new Point(0, 0);
             gbxDatosPersonales.Name = "gbxDatosPersonales";
-            gbxDatosPersonales.Size = new Size(252, 195);
+            gbxDatosPersonales.Size = new Size(252, 245);
             gbxDatosPersonales.TabIndex = 0;
             gbxDatosPersonales.TabStop = false;
             gbxDatosPersonales.Enter += groupBox1_Enter;
@@ -93,9 +93,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(6, 105);
+            pictureBox1.Location = new Point(6, 120);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(236, 80);
+            pictureBox1.Size = new Size(236, 119);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -104,7 +104,7 @@
             // lblPregunta
             // 
             lblPregunta.AutoSize = true;
-            lblPregunta.Location = new Point(6, 81);
+            lblPregunta.Location = new Point(6, 95);
             lblPregunta.Name = "lblPregunta";
             lblPregunta.Size = new Size(96, 15);
             lblPregunta.TabIndex = 3;
@@ -114,7 +114,7 @@
             // lblEdad
             // 
             lblEdad.AutoSize = true;
-            lblEdad.Location = new Point(15, 51);
+            lblEdad.Location = new Point(24, 62);
             lblEdad.Name = "lblEdad";
             lblEdad.Size = new Size(33, 15);
             lblEdad.TabIndex = 2;
@@ -124,7 +124,7 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(6, 19);
+            lblNombre.Location = new Point(20, 24);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(51, 15);
             lblNombre.TabIndex = 1;
@@ -133,7 +133,7 @@
             // chkEstudiante
             // 
             chkEstudiante.AutoSize = true;
-            chkEstudiante.Location = new Point(108, 80);
+            chkEstudiante.Location = new Point(117, 95);
             chkEstudiante.Name = "chkEstudiante";
             chkEstudiante.Size = new Size(35, 19);
             chkEstudiante.TabIndex = 3;
@@ -142,7 +142,7 @@
             // 
             // txtEdad
             // 
-            txtEdad.Location = new Point(77, 45);
+            txtEdad.Location = new Point(77, 54);
             txtEdad.MaxLength = 3;
             txtEdad.Name = "txtEdad";
             txtEdad.Size = new Size(34, 23);
@@ -171,7 +171,7 @@
             gbxPlan.Controls.Add(cboPlan);
             gbxPlan.Location = new Point(6, -5);
             gbxPlan.Name = "gbxPlan";
-            gbxPlan.Size = new Size(239, 193);
+            gbxPlan.Size = new Size(239, 253);
             gbxPlan.TabIndex = 1;
             gbxPlan.TabStop = false;
             // 
@@ -180,7 +180,7 @@
             pictureBox2.Image = Properties.Resources.images__6_;
             pictureBox2.Location = new Point(7, 136);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(226, 57);
+            pictureBox2.Size = new Size(226, 111);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 13;
             pictureBox2.TabStop = false;
@@ -266,7 +266,6 @@
             // gbxFormaDePago1
             // 
             gbxFormaDePago1.Controls.Add(pictureBox3);
-            gbxFormaDePago1.Controls.Add(btnLimpiar);
             gbxFormaDePago1.Controls.Add(btnCalcular);
             gbxFormaDePago1.Controls.Add(lblCuotas);
             gbxFormaDePago1.Controls.Add(cboCuotas);
@@ -281,28 +280,18 @@
             // pictureBox3
             // 
             pictureBox3.Image = Properties.Resources.images__7_;
-            pictureBox3.Location = new Point(6, 118);
+            pictureBox3.Location = new Point(6, 109);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(230, 62);
+            pictureBox3.Size = new Size(230, 71);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 9;
             pictureBox3.TabStop = false;
             // 
-            // btnLimpiar
-            // 
-            btnLimpiar.Location = new Point(117, 80);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(75, 23);
-            btnLimpiar.TabIndex = 3;
-            btnLimpiar.Text = "&Limpiar";
-            btnLimpiar.UseVisualStyleBackColor = true;
-            btnLimpiar.Click += EstadoInicial;
-            // 
             // btnCalcular
             // 
-            btnCalcular.Location = new Point(117, 44);
+            btnCalcular.Location = new Point(117, 55);
             btnCalcular.Name = "btnCalcular";
-            btnCalcular.Size = new Size(75, 23);
+            btnCalcular.Size = new Size(119, 39);
             btnCalcular.TabIndex = 2;
             btnCalcular.Text = "&Calcular";
             btnCalcular.UseVisualStyleBackColor = true;
@@ -311,18 +300,19 @@
             // lblCuotas
             // 
             lblCuotas.AutoSize = true;
-            lblCuotas.Location = new Point(117, 18);
+            lblCuotas.Location = new Point(117, 23);
             lblCuotas.Name = "lblCuotas";
             lblCuotas.Size = new Size(44, 15);
             lblCuotas.TabIndex = 6;
             lblCuotas.Text = "Cuotas";
+            lblCuotas.Click += lblCuotas_Click;
             // 
             // cboCuotas
             // 
             cboCuotas.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCuotas.FormattingEnabled = true;
             cboCuotas.Items.AddRange(new object[] { "1", "3", "6" });
-            cboCuotas.Location = new Point(167, 15);
+            cboCuotas.Location = new Point(167, 20);
             cboCuotas.Name = "cboCuotas";
             cboCuotas.Size = new Size(69, 23);
             cboCuotas.TabIndex = 1;
@@ -361,15 +351,25 @@
             rbtEfectivo.Text = "Efectivo";
             rbtEfectivo.UseVisualStyleBackColor = true;
             // 
+            // btnLimpiar
+            // 
+            btnLimpiar.Location = new Point(3, 186);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(245, 62);
+            btnLimpiar.TabIndex = 3;
+            btnLimpiar.Text = "&Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += EstadoInicial;
+            // 
             // tbcMenuPrincipal
             // 
             tbcMenuPrincipal.Controls.Add(tbpDatosPersonales);
             tbcMenuPrincipal.Controls.Add(tbpPlan);
             tbcMenuPrincipal.Controls.Add(tbpFormasDePago);
-            tbcMenuPrincipal.Location = new Point(10, 12);
+            tbcMenuPrincipal.Location = new Point(27, 21);
             tbcMenuPrincipal.Name = "tbcMenuPrincipal";
             tbcMenuPrincipal.SelectedIndex = 0;
-            tbcMenuPrincipal.Size = new Size(256, 219);
+            tbcMenuPrincipal.Size = new Size(262, 279);
             tbcMenuPrincipal.TabIndex = 0;
             // 
             // tbpDatosPersonales
@@ -378,7 +378,7 @@
             tbpDatosPersonales.Location = new Point(4, 24);
             tbpDatosPersonales.Name = "tbpDatosPersonales";
             tbpDatosPersonales.Padding = new Padding(3);
-            tbpDatosPersonales.Size = new Size(248, 191);
+            tbpDatosPersonales.Size = new Size(254, 251);
             tbpDatosPersonales.TabIndex = 0;
             tbpDatosPersonales.Text = "Datos Personales";
             tbpDatosPersonales.UseVisualStyleBackColor = true;
@@ -391,16 +391,17 @@
             tbpPlan.Location = new Point(4, 24);
             tbpPlan.Name = "tbpPlan";
             tbpPlan.Padding = new Padding(3);
-            tbpPlan.Size = new Size(248, 191);
+            tbpPlan.Size = new Size(254, 251);
             tbpPlan.TabIndex = 1;
             tbpPlan.Text = "Plan";
             // 
             // tbpFormasDePago
             // 
             tbpFormasDePago.Controls.Add(gbxFormaDePago1);
+            tbpFormasDePago.Controls.Add(btnLimpiar);
             tbpFormasDePago.Location = new Point(4, 24);
             tbpFormasDePago.Name = "tbpFormasDePago";
-            tbpFormasDePago.Size = new Size(248, 191);
+            tbpFormasDePago.Size = new Size(254, 251);
             tbpFormasDePago.TabIndex = 2;
             tbpFormasDePago.Text = "Formas De Pago";
             tbpFormasDePago.UseVisualStyleBackColor = true;
@@ -411,7 +412,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.HotTrack;
-            ClientSize = new Size(278, 239);
+            ClientSize = new Size(315, 323);
             Controls.Add(tbcMenuPrincipal);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
