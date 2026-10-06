@@ -147,6 +147,8 @@
             txtEdad.Name = "txtEdad";
             txtEdad.Size = new Size(34, 23);
             txtEdad.TabIndex = 2;
+            txtEdad.TextChanged += txtEdad_TextChanged;
+            txtEdad.KeyPress += txtEdad_KeyPress;
             // 
             // txtNombre
             // 
@@ -156,6 +158,7 @@
             txtNombre.Size = new Size(132, 23);
             txtNombre.TabIndex = 1;
             txtNombre.TextChanged += txtNombre_TextChanged;
+            txtNombre.KeyPress += txtNombre_KeyPress;
             // 
             // gbxPlan
             // 
@@ -171,7 +174,7 @@
             gbxPlan.Controls.Add(cboPlan);
             gbxPlan.Location = new Point(6, -5);
             gbxPlan.Name = "gbxPlan";
-            gbxPlan.Size = new Size(239, 253);
+            gbxPlan.Size = new Size(248, 253);
             gbxPlan.TabIndex = 1;
             gbxPlan.TabStop = false;
             // 
@@ -223,13 +226,14 @@
             txtMeses.Size = new Size(35, 23);
             txtMeses.TabIndex = 2;
             txtMeses.TextChanged += ValidarCamposCompletos;
+            txtMeses.KeyPress += txtMeses_KeyPress;
             // 
             // lblTurno
             // 
             lblTurno.AutoSize = true;
             lblTurno.Location = new Point(7, 56);
             lblTurno.Name = "lblTurno";
-            lblTurno.Size = new Size(39, 15);
+            lblTurno.Size = new Size(38, 15);
             lblTurno.TabIndex = 7;
             lblTurno.Text = "Turno";
             // 
@@ -272,7 +276,7 @@
             gbxFormaDePago1.Controls.Add(gbxFormaDePago2);
             gbxFormaDePago1.Location = new Point(3, 0);
             gbxFormaDePago1.Name = "gbxFormaDePago1";
-            gbxFormaDePago1.Size = new Size(242, 186);
+            gbxFormaDePago1.Size = new Size(245, 186);
             gbxFormaDePago1.TabIndex = 2;
             gbxFormaDePago1.TabStop = false;
             gbxFormaDePago1.Enter += gbxFormaDePago_Enter;
@@ -333,7 +337,7 @@
             rbtTarjeta.AutoSize = true;
             rbtTarjeta.Location = new Point(6, 60);
             rbtTarjeta.Name = "rbtTarjeta";
-            rbtTarjeta.Size = new Size(60, 19);
+            rbtTarjeta.Size = new Size(59, 19);
             rbtTarjeta.TabIndex = 1;
             rbtTarjeta.TabStop = true;
             rbtTarjeta.Text = "Tarjeta";
@@ -359,7 +363,7 @@
             btnLimpiar.TabIndex = 3;
             btnLimpiar.Text = "&Limpiar";
             btnLimpiar.UseVisualStyleBackColor = true;
-            btnLimpiar.Click += EstadoInicial;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // tbcMenuPrincipal
             // 

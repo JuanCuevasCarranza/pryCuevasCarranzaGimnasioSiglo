@@ -6,11 +6,33 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
+
+public struct SOCIO
+{
+    public string Nombre;
+    public int Edad;
+    public string Categoria;
+    public string Plan;
+    public string HorarioTurno;
+    public int Meses;
+    public bool Casillero;
+    public bool Estudiante;
+    public string FormaPago;
+    public decimal Total;
+    public decimal ValorCuota;
+}
+
 namespace pryCuevasCarranzaGimnasioSiglo
 {
     public partial class frmInscripcion : Form
     {
-
+        // Constantes de la aplicación (Paso 9)
+        public const decimal PRECIO_MUSCULACION = 15000m;
+        public const decimal PRECIO_FUNCIONAL = 18000m;
+        public const decimal PRECIO_NATACION = 22000m;
+        public const decimal PRECIO_CASILLERO = 3000m;
+        public const int EDAD_MINIMA = 14;
+        public const decimal RECARGO_SEIS_CUOTAS = 0.20m;
         public frmInscripcion()
         {
             InitializeComponent();
@@ -18,9 +40,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
         public class Configuracion
         {
-            // Constantes locales o de clase
-            public const double PRECIO_NATACION = 22.000;
-            public const int EDAD_MINIMA = 14;
+
         }
 
         private void EstadoInicial(object sender, EventArgs e)
@@ -75,7 +95,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
         private void frmInscripcion_Load(object sender, EventArgs e)
         {
-
+            EstadoInicial(sender, e);
 
         }
 
@@ -141,18 +161,221 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            //char nombre;
-            //int numeros;
-            //int meses;
-            //decimal precio_mensual;
-            //decimal subtotal;
-            //decimal
-            //decimal
+            // Convertimos los textos ingresados a números
+            string nombre = txtNombre.Text;
+            int edad = int.Parse(txtEdad.Text);
+            int meses = int.Parse(txtMeses.Text);
+
+            // Validación de la edad mínima (14 años)
+            if (edad < EDAD_MINIMA)
+            {
+                MessageBox.Show("El socio es menor de edad mínima (14 años). No puede inscribirse.",
+                                "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Corta el cálculo y sale del método
+            }
+
+            // Validación del rango de meses (entre 1 y 12) usando operadores lógicos
+            if (meses < 1 || meses > 12)
+            {
+                MessageBox.Show("La cantidad de meses debe estar comprendida entre 1 y 12.",
+                                "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Corta el cálculo y sale del método
+            }
+
+            // Variables para los siguientes cálculos...
+            decimal precioMensual = 0m;
+            decimal subtotal = 0m;
+            decimal porcentajeDescuento = 0m;
+            decimal porcentajeAjustePago = 0m;
+            decimal total = 0m;
+            decimal valorCuota = 0m;
+
+
+            string planElegido = cboPlan.SelectedItem?.ToString() ?? "";
+
+            switch (planElegido)
+            {
+                case "Musculación":
+                    precioMensual = PRECIO_MUSCULACION;
+                    break;
+                case "Funcional":
+                    precioMensual = PRECIO_FUNCIONAL;
+                    break;
+                case "Natación":
+                    precioMensual = PRECIO_NATACION;
+                    break;
+                default:
+                    MessageBox.Show("Plan inválido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+            }
+
+            // Horario según el turno (switch con int usando la posición seleccionada)
+            string horarioTurno = "";
+            int indiceTurno = cboTurno.SelectedIndex;
+
+            switch (indiceTurno)
+            {
+                case 0:
+                    horarioTurno = "7 a 12 h"; // Mañana
+                    break;
+                case 1:
+                    horarioTurno = "14 a 18 h"; // Tarde
+                    break;
+                case 2:
+                    horarioTurno = "18 a 23 h"; // Noche
+                    break;
+                default:
+                    horarioTurno = "Turno no especificado";
+                    break;
+            }
+
+            // Casillero: if en un solo renglón (sin llaves)
+            if (chkCasillero.Checked) precioMensual += PRECIO_CASILLERO;
+
+            // Calculamos el subtotal (precio mensual con casillero incluido, por cantidad de meses)
+            subtotal = precioMensual * meses;
+
+            // Descuento por edad o estudiante: if anidado
+            // Menor de 18 años: 25% de descuento
+            if (edad < 18)
+            {
+                porcentajeDescuento = 0.25m;
+            }
+            else
+            {
+                // Si no es menor de 18, anidamos otro if-else
+                // 65 años o más: 30% de descuento
+                if (edad >= 65)
+                {
+                    porcentajeDescuento = 0.30m;
+                }
+                else
+                {
+                    // Tercer nivel: si no es jubilado, preguntamos si es estudiante (15% o 0%)
+                    if (chkEstudiante.Checked)
+                    {
+                        porcentajeDescuento = 0.15m;
+                    }
+                    else
+                    {
+                        porcentajeDescuento = 0.0m;
+                    }
+                }
+            }
+
+            // Descuento o recargo según la forma de pago (¡Aquí estaba el else suelto!)
+            if (rbtEfectivo.Checked)
+            {
+                porcentajeAjustePago = -0.10m; // 10% de descuento en efectivo
+            }
+            else
+            {
+                // Tarjeta: convertimos la cantidad de cuotas elegida a entero de forma segura
+                int cuotas = int.Parse(cboCuotas.SelectedItem?.ToString() ?? "1");
+
+                // Cadena de if - else if para asignar el recargo según las cuotas
+                if (cuotas == 1)
+                {
+                    porcentajeAjustePago = 0.0m; // 1 cuota sin recargo
+                }
+                else if (cuotas == 3)
+                {
+                    porcentajeAjustePago = 0.10m; // 3 cuotas +10%
+                }
+                else if (cuotas == 6)
+                {
+                    porcentajeAjustePago = RECARGO_SEIS_CUOTAS; // 6 cuotas +20% (usando la constante)
+                }
+            }
+
+            // Calculamos el monto intermedio aplicando el descuento por edad/estudiante
+            decimal subtotalConDescuentoEdad = subtotal - (subtotal * porcentajeDescuento);
+
+            // Calculamos el total final aplicando el ajuste por la forma de pago (descuento o recargo)
+            total = subtotalConDescuentoEdad + (subtotalConDescuentoEdad * porcentajeAjustePago);
+
+            // Categoría del socio ("Menor" si es menor de 18, caso contrario "Mayor")
+            string categoria = (edad < 18) ? "Menor" : "Mayor";
+
+            // Texto de la forma de pago de forma segura
+            string formaPagoTexto = rbtEfectivo.Checked ? "Efectivo" : $"Tarjeta en {cboCuotas.SelectedItem?.ToString() ?? "1"} cuotas";
+
+            // Valor de cada cuota de forma segura
+            int cuotasElegidas = rbtEfectivo.Checked ? 1 : int.Parse(cboCuotas.SelectedItem?.ToString() ?? "1");
+            valorCuota = rbtEfectivo.Checked ? total : total / cuotasElegidas;
+
+
+            SOCIO unSocio;
+            unSocio.Nombre = nombre;
+            unSocio.Edad = edad;
+            unSocio.Categoria = categoria;
+            unSocio.Plan = planElegido;
+            unSocio.HorarioTurno = horarioTurno;
+            unSocio.Meses = meses;
+            unSocio.Casillero = chkCasillero.Checked;
+            unSocio.Estudiante = chkEstudiante.Checked;
+            unSocio.FormaPago = formaPagoTexto;
+            unSocio.Total = total;
+            unSocio.ValorCuota = valorCuota;
+
+            // Mostrar resultados utilizando los datos del struct
+            string casilleroTextoStruct = unSocio.Casillero ? "Sí" : "No";
+            string estudianteTextoStruct = unSocio.Estudiante ? "Sí" : "No";
+
+            string mensaje = $"--- RESUMEN DE INSCRIPCIÓN (SOCIO) ---\n" +
+                             $"Socio: {unSocio.Nombre} ({unSocio.Categoria})\n" +
+                             $"Edad: {unSocio.Edad} años (Estudiante: {estudianteTextoStruct})\n" +
+                             $"Plan: {unSocio.Plan} - Turno: {unSocio.HorarioTurno}\n" +
+                             $"Meses: {unSocio.Meses} | Casillero: {casilleroTextoStruct}\n" +
+                             $"Forma de pago: {unSocio.FormaPago}\n" +
+                             $"----------------------------------\n" +
+                             $"Subtotal: $ {subtotal:N2}\n" +
+                             $"Total Final: $ {unSocio.Total:N2}\n" +
+                             $"Valor de la cuota: $ {unSocio.ValorCuota:N2}";
+
+            MessageBox.Show(mensaje, "Resultado de la Inscripción", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void lblCuotas_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            EstadoInicial(sender, e);
+        }
+
+        private void txtEdad_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEdad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Si no es un dígito y tampoco es la tecla Backspace (borrar)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Descarta la tecla
+            }
+        }
+
+        private void txtMeses_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Descarta la tecla
+            }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Si la tecla presionada es una letra minúscula, la convertimos a mayúscula
+            if (char.IsLower(e.KeyChar))
+            {
+                e.KeyChar = char.ToUpper(e.KeyChar);
+            }
+        }
+
     }
 }
