@@ -19,8 +19,8 @@ namespace pryCuevasCarranzaGimnasioSiglo
         public class Configuracion
         {
             // Constantes locales o de clase
-            public const double PRECIO_NATACION = 450.50;
-            public const int EDAD_MINIMA = 18;
+            public const double PRECIO_NATACION = 22.000;
+            public const int EDAD_MINIMA = 14;
         }
 
         private void EstadoInicial(object sender, EventArgs e)
@@ -141,7 +141,13 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-
+            //char nombre;
+            //int numeros;
+            //int meses;
+            //decimal precio_mensual;
+            //decimal subtotal;
+            //decimal
+            //decimal
         }
 
         private void lblCuotas_Click(object sender, EventArgs e)
