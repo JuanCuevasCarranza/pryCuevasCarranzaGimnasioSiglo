@@ -16,7 +16,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
             InitializeComponent();
         }
 
-        private void EstadoInicial()
+        private void EstadoInicial(object sender, EventArgs e)
         {
             txtNombre.Clear();
             txtEdad.Clear();
@@ -70,8 +70,8 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
         private void frmInscripcion_Load(object sender, EventArgs e)
         {
-            // (Asegúrate de agregar aquí los ítems de tus ComboBox si no los cargaste desde el diseñador)
-            EstadoInicial();
+
+
         }
 
         private void tbpDatosPersonales_Click(object sender, EventArgs e)
@@ -109,11 +109,6 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            EstadoInicial();
-        }
-
         private void rbtTarjeta_CheckedChanged(object sender, EventArgs e)
         {
             if (rbtTarjeta.Checked)
@@ -137,6 +132,11 @@ namespace pryCuevasCarranzaGimnasioSiglo
             {
                 btnCalcular.Enabled = false;
             }
+        }
+
+        private void btnCalcular_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

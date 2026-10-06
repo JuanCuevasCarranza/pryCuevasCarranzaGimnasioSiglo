@@ -43,7 +43,7 @@
             chkCasillero = new CheckBox();
             lblMeses = new Label();
             txtMeses = new TextBox();
-            label2 = new Label();
+            lblTurno = new Label();
             lblPlan = new Label();
             cboTurno = new ComboBox();
             cboPlan = new ComboBox();
@@ -107,7 +107,7 @@
             lblPregunta.Location = new Point(6, 81);
             lblPregunta.Name = "lblPregunta";
             lblPregunta.Size = new Size(96, 15);
-            lblPregunta.TabIndex = 0;
+            lblPregunta.TabIndex = 3;
             lblPregunta.Text = "¿Eres estudiante?";
             lblPregunta.Click += lblPregunta_Click;
             // 
@@ -117,7 +117,7 @@
             lblEdad.Location = new Point(15, 51);
             lblEdad.Name = "lblEdad";
             lblEdad.Size = new Size(33, 15);
-            lblEdad.TabIndex = 3;
+            lblEdad.TabIndex = 2;
             lblEdad.Text = "Edad";
             lblEdad.Click += lblEdad_Click;
             // 
@@ -127,7 +127,7 @@
             lblNombre.Location = new Point(6, 19);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(51, 15);
-            lblNombre.TabIndex = 0;
+            lblNombre.TabIndex = 1;
             lblNombre.Text = "Nombre";
             // 
             // chkEstudiante
@@ -136,7 +136,7 @@
             chkEstudiante.Location = new Point(108, 80);
             chkEstudiante.Name = "chkEstudiante";
             chkEstudiante.Size = new Size(35, 19);
-            chkEstudiante.TabIndex = 2;
+            chkEstudiante.TabIndex = 3;
             chkEstudiante.Text = "Sí";
             chkEstudiante.UseVisualStyleBackColor = true;
             // 
@@ -146,7 +146,7 @@
             txtEdad.MaxLength = 3;
             txtEdad.Name = "txtEdad";
             txtEdad.Size = new Size(34, 23);
-            txtEdad.TabIndex = 1;
+            txtEdad.TabIndex = 2;
             // 
             // txtNombre
             // 
@@ -154,7 +154,7 @@
             txtNombre.MaxLength = 30;
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(132, 23);
-            txtNombre.TabIndex = 0;
+            txtNombre.TabIndex = 1;
             txtNombre.TextChanged += txtNombre_TextChanged;
             // 
             // gbxPlan
@@ -165,7 +165,7 @@
             gbxPlan.Controls.Add(chkCasillero);
             gbxPlan.Controls.Add(lblMeses);
             gbxPlan.Controls.Add(txtMeses);
-            gbxPlan.Controls.Add(label2);
+            gbxPlan.Controls.Add(lblTurno);
             gbxPlan.Controls.Add(lblPlan);
             gbxPlan.Controls.Add(cboTurno);
             gbxPlan.Controls.Add(cboPlan);
@@ -191,7 +191,7 @@
             lblCasillero.Location = new Point(91, 93);
             lblCasillero.Name = "lblCasillero";
             lblCasillero.Size = new Size(87, 15);
-            lblCasillero.TabIndex = 12;
+            lblCasillero.TabIndex = 0;
             lblCasillero.Text = "¿Con Casillero?";
             lblCasillero.Click += lblCasillero_Click;
             // 
@@ -201,7 +201,7 @@
             chkCasillero.Location = new Point(91, 111);
             chkCasillero.Name = "chkCasillero";
             chkCasillero.Size = new Size(145, 19);
-            chkCasillero.TabIndex = 11;
+            chkCasillero.TabIndex = 0;
             chkCasillero.Text = "Casillero ($ 3.000/mes)";
             chkCasillero.UseVisualStyleBackColor = true;
             chkCasillero.CheckedChanged += checkBox1_CheckedChanged;
@@ -212,7 +212,7 @@
             lblMeses.Location = new Point(4, 102);
             lblMeses.Name = "lblMeses";
             lblMeses.Size = new Size(40, 15);
-            lblMeses.TabIndex = 9;
+            lblMeses.TabIndex = 1;
             lblMeses.Text = "Meses";
             // 
             // txtMeses
@@ -221,17 +221,17 @@
             txtMeses.MaxLength = 2;
             txtMeses.Name = "txtMeses";
             txtMeses.Size = new Size(35, 23);
-            txtMeses.TabIndex = 8;
+            txtMeses.TabIndex = 2;
             txtMeses.TextChanged += ValidarCamposCompletos;
             // 
-            // label2
+            // lblTurno
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(7, 56);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 7;
-            label2.Text = "Turno";
+            lblTurno.AutoSize = true;
+            lblTurno.Location = new Point(7, 56);
+            lblTurno.Name = "lblTurno";
+            lblTurno.Size = new Size(39, 15);
+            lblTurno.TabIndex = 7;
+            lblTurno.Text = "Turno";
             // 
             // lblPlan
             // 
@@ -250,7 +250,7 @@
             cboTurno.Location = new Point(50, 53);
             cboTurno.Name = "cboTurno";
             cboTurno.Size = new Size(121, 23);
-            cboTurno.TabIndex = 4;
+            cboTurno.TabIndex = 7;
             cboTurno.SelectedIndexChanged += cboTurno_SelectedIndexChanged;
             // 
             // cboPlan
@@ -261,7 +261,7 @@
             cboPlan.Location = new Point(50, 16);
             cboPlan.Name = "cboPlan";
             cboPlan.Size = new Size(121, 23);
-            cboPlan.TabIndex = 3;
+            cboPlan.TabIndex = 5;
             // 
             // gbxFormaDePago1
             // 
@@ -293,19 +293,20 @@
             btnLimpiar.Location = new Point(117, 80);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(75, 23);
-            btnLimpiar.TabIndex = 8;
+            btnLimpiar.TabIndex = 3;
             btnLimpiar.Text = "&Limpiar";
             btnLimpiar.UseVisualStyleBackColor = true;
-            btnLimpiar.Click += btnLimpiar_Click;
+            btnLimpiar.Click += EstadoInicial;
             // 
             // btnCalcular
             // 
             btnCalcular.Location = new Point(117, 44);
             btnCalcular.Name = "btnCalcular";
             btnCalcular.Size = new Size(75, 23);
-            btnCalcular.TabIndex = 7;
+            btnCalcular.TabIndex = 2;
             btnCalcular.Text = "&Calcular";
             btnCalcular.UseVisualStyleBackColor = true;
+            btnCalcular.Click += btnCalcular_Click;
             // 
             // lblCuotas
             // 
@@ -324,7 +325,7 @@
             cboCuotas.Location = new Point(167, 15);
             cboCuotas.Name = "cboCuotas";
             cboCuotas.Size = new Size(69, 23);
-            cboCuotas.TabIndex = 5;
+            cboCuotas.TabIndex = 1;
             // 
             // gbxFormaDePago2
             // 
@@ -342,8 +343,8 @@
             rbtTarjeta.AutoSize = true;
             rbtTarjeta.Location = new Point(6, 60);
             rbtTarjeta.Name = "rbtTarjeta";
-            rbtTarjeta.Size = new Size(59, 19);
-            rbtTarjeta.TabIndex = 6;
+            rbtTarjeta.Size = new Size(60, 19);
+            rbtTarjeta.TabIndex = 1;
             rbtTarjeta.TabStop = true;
             rbtTarjeta.Text = "Tarjeta";
             rbtTarjeta.UseVisualStyleBackColor = true;
@@ -355,7 +356,7 @@
             rbtEfectivo.Location = new Point(6, 30);
             rbtEfectivo.Name = "rbtEfectivo";
             rbtEfectivo.Size = new Size(67, 19);
-            rbtEfectivo.TabIndex = 5;
+            rbtEfectivo.TabIndex = 0;
             rbtEfectivo.TabStop = true;
             rbtEfectivo.Text = "Efectivo";
             rbtEfectivo.UseVisualStyleBackColor = true;
@@ -409,7 +410,7 @@
             AcceptButton = btnCalcular;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Highlight;
+            BackColor = SystemColors.HotTrack;
             ClientSize = new Size(278, 239);
             Controls.Add(tbcMenuPrincipal);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -419,7 +420,7 @@
             Name = "frmInscripcion";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gimnasio Siglo — Inscripción";
-            Load += frmInscripcion_Load;
+            Load += EstadoInicial;
             gbxDatosPersonales.ResumeLayout(false);
             gbxDatosPersonales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -455,7 +456,7 @@
         private TabPage tbpPlan;
         private TabPage tbpFormasDePago;
         private Label lblPregunta;
-        private Label label2;
+        private Label lblTurno;
         private Label lblPlan;
         private TextBox txtMeses;
         private Label lblMeses;
