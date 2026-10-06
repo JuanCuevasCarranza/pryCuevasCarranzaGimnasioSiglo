@@ -296,6 +296,7 @@
             btnLimpiar.TabIndex = 8;
             btnLimpiar.Text = "&Limpiar";
             btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // btnCalcular
             // 
@@ -457,12 +458,12 @@
         private Label lblPlan;
         private TextBox txtMeses;
         private Label lblMeses;
-        private CheckBox chkCasillero;
+        private CheckBox chkEstudiant;
         private GroupBox gbxFormaDePago2;
         private RadioButton rbtTarjeta;
         private RadioButton rbtEfectivo;
         private PictureBox pictureBox1;
-        private CheckBox checkBox1;
+        private CheckBox chkCasillero;
         private ComboBox cboCuotas;
         private Label lblCasillero;
         private Button btnLimpiar;
