@@ -178,9 +178,9 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.images__6_;
-            pictureBox2.Location = new Point(7, 144);
+            pictureBox2.Location = new Point(7, 136);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(226, 49);
+            pictureBox2.Size = new Size(226, 57);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 13;
             pictureBox2.TabStop = false;
@@ -188,11 +188,12 @@
             // lblCasillero
             // 
             lblCasillero.AutoSize = true;
-            lblCasillero.Location = new Point(94, 93);
+            lblCasillero.Location = new Point(91, 93);
             lblCasillero.Name = "lblCasillero";
             lblCasillero.Size = new Size(87, 15);
             lblCasillero.TabIndex = 12;
             lblCasillero.Text = "¿Con Casillero?";
+            lblCasillero.Click += lblCasillero_Click;
             // 
             // chkCasillero
             // 
@@ -403,6 +404,7 @@
             // 
             // frmInscripcion
             // 
+            AcceptButton = btnCalcular;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Highlight;

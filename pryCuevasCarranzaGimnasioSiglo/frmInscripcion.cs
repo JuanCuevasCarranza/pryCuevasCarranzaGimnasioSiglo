@@ -79,5 +79,10 @@ namespace pryCuevasCarranzaGimnasioSiglo
         {
 
         }
+
+        private void lblCasillero_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
