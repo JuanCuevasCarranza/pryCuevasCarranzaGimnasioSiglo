@@ -18,30 +18,25 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
         private void EstadoInicial()
         {
-            // Vaciar cajas de texto
             txtNombre.Clear();
             txtEdad.Clear();
-
-            // Configurar valores iniciales estándar
             txtMeses.Text = "1";
             chkEstudiante.Checked = false;
             chkCasillero.Checked = false;
 
-            // Seleccionar por defecto el primer elemento de los ComboBox (si tienen elementos)
+            // Selecciona el primer elemento de los ComboBox si contienen elementos
             if (cboPlan.Items.Count > 0) cboPlan.SelectedIndex = 0;
             if (cboTurno.Items.Count > 0) cboTurno.SelectedIndex = 0;
 
-            // Configurar la forma de pago (Efectivo marcado por defecto)
             rbtEfectivo.Checked = true;
             cboCuotas.SelectedIndex = -1; // Sin selección
-            cboCuotas.Enabled = false;   // Deshabilitado porque está en Efectivo
+            cboCuotas.Enabled = false;   // Deshabilitado por defecto
 
-            // Deshabilitar el botón calcular inicialmente
-            btnCalcular.Enabled = false;
-
-            // Dejar el cursor (foco) listo para escribir en el nombre
-            txtNombre.Focus();
+            btnCalcular.Enabled = false; // Deshabilitado hasta que se llenen los campos obligatorios
+            txtNombre.Focus();           // Deja el cursor listo para escribir
         }
+
+        // Invocación desde el evento Load del formulario (Paso 7)
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -75,7 +70,8 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
         private void frmInscripcion_Load(object sender, EventArgs e)
         {
-
+            // (Asegúrate de agregar aquí los ítems de tus ComboBox si no los cargaste desde el diseñador)
+            EstadoInicial();
         }
 
         private void tbpDatosPersonales_Click(object sender, EventArgs e)
@@ -117,5 +113,31 @@ namespace pryCuevasCarranzaGimnasioSiglo
         {
             EstadoInicial();
         }
+
+        private void rbtTarjeta_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtTarjeta.Checked)
+            {
+                cboCuotas.Enabled = true;
+                cboCuotas.SelectedIndex = 0; // Selecciona 1 cuota por defecto
+            }
+            else
+            {
+                cboCuotas.Enabled = false;
+                cboCuotas.SelectedIndex = -1; // Sin selección y deshabilitado
+            }
+        }
+        private void ValidarCamposCompletos(object sender, EventArgs e)
+        {
+            if (txtNombre.Text.Trim() != "" && txtEdad.Text.Trim() != "" && txtMeses.Text.Trim() != "")
+            {
+                btnCalcular.Enabled = true;
+            }
+            else
+            {
+                btnCalcular.Enabled = false;
+            }
+        }
+
     }
 }

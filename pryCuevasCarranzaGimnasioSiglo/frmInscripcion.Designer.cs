@@ -222,7 +222,7 @@
             txtMeses.Name = "txtMeses";
             txtMeses.Size = new Size(35, 23);
             txtMeses.TabIndex = 8;
-            txtMeses.TextChanged += txtMeses_TextChanged;
+            txtMeses.TextChanged += ValidarCamposCompletos;
             // 
             // label2
             // 
@@ -347,6 +347,7 @@
             rbtTarjeta.TabStop = true;
             rbtTarjeta.Text = "Tarjeta";
             rbtTarjeta.UseVisualStyleBackColor = true;
+            rbtTarjeta.CheckedChanged += rbtTarjeta_CheckedChanged;
             // 
             // rbtEfectivo
             // 
@@ -458,7 +459,6 @@
         private Label lblPlan;
         private TextBox txtMeses;
         private Label lblMeses;
-        private CheckBox chkEstudiant;
         private GroupBox gbxFormaDePago2;
         private RadioButton rbtTarjeta;
         private RadioButton rbtEfectivo;
