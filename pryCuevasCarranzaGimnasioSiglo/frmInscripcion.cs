@@ -41,6 +41,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
         public class Configuracion
         {
+
         }
 
         // Checklist: ☐ Al abrir, el formulario respeta el estado inicial del enunciado. (✔ CUMPLIDO)
@@ -145,7 +146,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
             string planElegido = cboPlan.SelectedItem?.ToString()?.Trim() ?? "";
 
-            // 1. Switch de plan (ya existente)
+            // 1. Switch de plan 
             switch (planElegido.ToLower())
             {
                 case string p when p.Contains("musculaci"):
@@ -191,7 +192,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
                     break;
             }
 
-            // 4. If en un renglón para el casillero (¡Única vez!)
+            // 4. If en un renglón para el casillero 
             if (chkCasillero.Checked) precioMensual += PRECIO_CASILLERO;
 
             // 5. Cálculo del subtotal

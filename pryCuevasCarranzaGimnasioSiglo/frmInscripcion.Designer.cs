@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInscripcion));
             gbxDatosPersonales = new GroupBox();
-            pictureBox1 = new PictureBox();
+            pbx1 = new PictureBox();
             lblPregunta = new Label();
             lblEdad = new Label();
             lblNombre = new Label();
@@ -40,7 +40,7 @@
             gbxPlan = new GroupBox();
             lblPaseLibre = new Label();
             chkPaseLibre = new CheckBox();
-            pictureBox2 = new PictureBox();
+            pbx2 = new PictureBox();
             lblCasillero = new Label();
             chkCasillero = new CheckBox();
             lblMeses = new Label();
@@ -50,7 +50,7 @@
             cboTurno = new ComboBox();
             cboPlan = new ComboBox();
             gbxFormaDePago1 = new GroupBox();
-            pictureBox3 = new PictureBox();
+            pbx3 = new PictureBox();
             btnCalcular = new Button();
             lblCuotas = new Label();
             cboCuotas = new ComboBox();
@@ -63,11 +63,11 @@
             tbpPlan = new TabPage();
             tbpFormasDePago = new TabPage();
             gbxDatosPersonales.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbx1).BeginInit();
             gbxPlan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbx2).BeginInit();
             gbxFormaDePago1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbx3).BeginInit();
             gbxFormaDePago2.SuspendLayout();
             tbcMenuPrincipal.SuspendLayout();
             tbpDatosPersonales.SuspendLayout();
@@ -78,7 +78,7 @@
             // gbxDatosPersonales
             // 
             gbxDatosPersonales.BackColor = Color.Transparent;
-            gbxDatosPersonales.Controls.Add(pictureBox1);
+            gbxDatosPersonales.Controls.Add(pbx1);
             gbxDatosPersonales.Controls.Add(lblPregunta);
             gbxDatosPersonales.Controls.Add(lblEdad);
             gbxDatosPersonales.Controls.Add(lblNombre);
@@ -87,21 +87,21 @@
             gbxDatosPersonales.Controls.Add(txtNombre);
             gbxDatosPersonales.Location = new Point(0, 0);
             gbxDatosPersonales.Name = "gbxDatosPersonales";
-            gbxDatosPersonales.Size = new Size(252, 245);
+            gbxDatosPersonales.Size = new Size(248, 245);
             gbxDatosPersonales.TabIndex = 0;
             gbxDatosPersonales.TabStop = false;
             gbxDatosPersonales.Enter += groupBox1_Enter;
             // 
-            // pictureBox1
+            // pbx1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(6, 120);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(236, 119);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+            pbx1.Image = (Image)resources.GetObject("pbx1.Image");
+            pbx1.Location = new Point(6, 120);
+            pbx1.Name = "pbx1";
+            pbx1.Size = new Size(236, 119);
+            pbx1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbx1.TabIndex = 4;
+            pbx1.TabStop = false;
+            pbx1.Click += pictureBox1_Click;
             // 
             // lblPregunta
             // 
@@ -167,7 +167,7 @@
             gbxPlan.BackColor = Color.White;
             gbxPlan.Controls.Add(lblPaseLibre);
             gbxPlan.Controls.Add(chkPaseLibre);
-            gbxPlan.Controls.Add(pictureBox2);
+            gbxPlan.Controls.Add(pbx2);
             gbxPlan.Controls.Add(lblCasillero);
             gbxPlan.Controls.Add(chkCasillero);
             gbxPlan.Controls.Add(lblMeses);
@@ -178,7 +178,7 @@
             gbxPlan.Controls.Add(cboPlan);
             gbxPlan.Location = new Point(3, 0);
             gbxPlan.Name = "gbxPlan";
-            gbxPlan.Size = new Size(255, 248);
+            gbxPlan.Size = new Size(248, 248);
             gbxPlan.TabIndex = 1;
             gbxPlan.TabStop = false;
             // 
@@ -187,7 +187,7 @@
             lblPaseLibre.AutoSize = true;
             lblPaseLibre.Location = new Point(142, 19);
             lblPaseLibre.Name = "lblPaseLibre";
-            lblPaseLibre.Size = new Size(106, 15);
+            lblPaseLibre.Size = new Size(107, 15);
             lblPaseLibre.TabIndex = 15;
             lblPaseLibre.Text = "¿Tienes Pase Libre?";
             lblPaseLibre.Click += lblPaseLibre_Click;
@@ -202,15 +202,15 @@
             chkPaseLibre.Text = "PaseLibre";
             chkPaseLibre.UseVisualStyleBackColor = true;
             // 
-            // pictureBox2
+            // pbx2
             // 
-            pictureBox2.Image = Properties.Resources.images__6_;
-            pictureBox2.Location = new Point(7, 128);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(238, 114);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 13;
-            pictureBox2.TabStop = false;
+            pbx2.Image = Properties.Resources.images__6_;
+            pbx2.Location = new Point(7, 128);
+            pbx2.Name = "pbx2";
+            pbx2.Size = new Size(238, 114);
+            pbx2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbx2.TabIndex = 13;
+            pbx2.TabStop = false;
             // 
             // lblCasillero
             // 
@@ -257,7 +257,7 @@
             lblTurno.AutoSize = true;
             lblTurno.Location = new Point(7, 56);
             lblTurno.Name = "lblTurno";
-            lblTurno.Size = new Size(38, 15);
+            lblTurno.Size = new Size(39, 15);
             lblTurno.TabIndex = 7;
             lblTurno.Text = "Turno";
             // 
@@ -293,7 +293,7 @@
             // 
             // gbxFormaDePago1
             // 
-            gbxFormaDePago1.Controls.Add(pictureBox3);
+            gbxFormaDePago1.Controls.Add(pbx3);
             gbxFormaDePago1.Controls.Add(btnCalcular);
             gbxFormaDePago1.Controls.Add(lblCuotas);
             gbxFormaDePago1.Controls.Add(cboCuotas);
@@ -305,15 +305,15 @@
             gbxFormaDePago1.TabStop = false;
             gbxFormaDePago1.Enter += gbxFormaDePago_Enter;
             // 
-            // pictureBox3
+            // pbx3
             // 
-            pictureBox3.Image = Properties.Resources.images__7_;
-            pictureBox3.Location = new Point(6, 109);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(233, 71);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 9;
-            pictureBox3.TabStop = false;
+            pbx3.Image = Properties.Resources.images__7_;
+            pbx3.Location = new Point(6, 109);
+            pbx3.Name = "pbx3";
+            pbx3.Size = new Size(233, 71);
+            pbx3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbx3.TabIndex = 9;
+            pbx3.TabStop = false;
             // 
             // btnCalcular
             // 
@@ -361,7 +361,7 @@
             rbtTarjeta.AutoSize = true;
             rbtTarjeta.Location = new Point(6, 60);
             rbtTarjeta.Name = "rbtTarjeta";
-            rbtTarjeta.Size = new Size(59, 19);
+            rbtTarjeta.Size = new Size(60, 19);
             rbtTarjeta.TabIndex = 1;
             rbtTarjeta.TabStop = true;
             rbtTarjeta.Text = "Tarjeta";
@@ -452,13 +452,13 @@
             Load += EstadoInicial;
             gbxDatosPersonales.ResumeLayout(false);
             gbxDatosPersonales.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbx1).EndInit();
             gbxPlan.ResumeLayout(false);
             gbxPlan.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbx2).EndInit();
             gbxFormaDePago1.ResumeLayout(false);
             gbxFormaDePago1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbx3).EndInit();
             gbxFormaDePago2.ResumeLayout(false);
             gbxFormaDePago2.PerformLayout();
             tbcMenuPrincipal.ResumeLayout(false);
@@ -492,15 +492,15 @@
         private GroupBox gbxFormaDePago2;
         private RadioButton rbtTarjeta;
         private RadioButton rbtEfectivo;
-        private PictureBox pictureBox1;
+        private PictureBox pbx1;
         private CheckBox chkCasillero;
         private ComboBox cboCuotas;
         private Label lblCasillero;
         private Button btnLimpiar;
         private Button btnCalcular;
         private Label lblCuotas;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox2;
+        private PictureBox pbx3;
+        private PictureBox pbx2;
         private CheckBox chkPaseLibre;
         private Label lblPaseLibre;
     }
