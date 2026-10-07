@@ -97,6 +97,9 @@ namespace pryCuevasCarranzaGimnasioSiglo
         {
             EstadoInicial(sender, e);
 
+            // Vinculamos el evento KeyPress manualmente aquí:
+            txtNombre.KeyPress += txtNombre_KeyPress;
+
         }
 
         private void tbpDatosPersonales_Click(object sender, EventArgs e)
@@ -191,22 +194,28 @@ namespace pryCuevasCarranzaGimnasioSiglo
             decimal valorCuota = 0m;
 
 
-            string planElegido = cboPlan.SelectedItem?.ToString() ?? "";
+            string planElegido = cboPlan.SelectedItem?.ToString()?.Trim() ?? "";
+            string planLower = planElegido.ToLower();
 
-            switch (planElegido)
+            if (planLower.Contains("musculaci") || planLower.Contains("musculacin"))
             {
-                case "Musculación":
-                    precioMensual = PRECIO_MUSCULACION;
-                    break;
-                case "Funcional":
-                    precioMensual = PRECIO_FUNCIONAL;
-                    break;
-                case "Natación":
-                    precioMensual = PRECIO_NATACION;
-                    break;
-                default:
-                    MessageBox.Show("Plan inválido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                precioMensual = PRECIO_MUSCULACION;
+                planElegido = "Musculación"; // Normalizamos el nombre para el struct
+            }
+            else if (planLower.Contains("funcional"))
+            {
+                precioMensual = PRECIO_FUNCIONAL;
+                planElegido = "Funcional";
+            }
+            else if (planLower.Contains("nataci") || planLower.Contains("natacin"))
+            {
+                precioMensual = PRECIO_NATACION;
+                planElegido = "Natación";
+            }
+            else
+            {
+                MessageBox.Show($"Plan inválido ('{planElegido}'). Revisa los ítems del ComboBox.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // Horario según el turno (switch con int usando la posición seleccionada)
@@ -368,14 +377,26 @@ namespace pryCuevasCarranzaGimnasioSiglo
             }
         }
 
-        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtNombre_KeyPress(object? sender, KeyPressEventArgs e)
         {
-            // Si la tecla presionada es una letra minúscula, la convertimos a mayúscula
-            if (char.IsLower(e.KeyChar))
+            // Si la tecla presionada no es una letra, ni un espacio, ni la tecla Backspace (borrar)
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != (char)Keys.Back)
             {
-                e.KeyChar = char.ToUpper(e.KeyChar);
+                e.Handled = true; // Descarta la tecla y no deja escribirla
+            }
+            else
+            {
+                // Si es una letra minúscula, la convertimos a mayúscula automáticamente
+                if (char.IsLower(e.KeyChar))
+                {
+                    e.KeyChar = char.ToUpper(e.KeyChar);
+                }
             }
         }
 
+        private void frmInscripcion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }
