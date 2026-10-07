@@ -38,6 +38,8 @@
             txtEdad = new TextBox();
             txtNombre = new TextBox();
             gbxPlan = new GroupBox();
+            lblPaseLibre = new Label();
+            chkPaseLibre = new CheckBox();
             pictureBox2 = new PictureBox();
             lblCasillero = new Label();
             chkCasillero = new CheckBox();
@@ -133,7 +135,7 @@
             // chkEstudiante
             // 
             chkEstudiante.AutoSize = true;
-            chkEstudiante.Location = new Point(117, 95);
+            chkEstudiante.Location = new Point(108, 95);
             chkEstudiante.Name = "chkEstudiante";
             chkEstudiante.Size = new Size(35, 19);
             chkEstudiante.TabIndex = 3;
@@ -163,6 +165,8 @@
             // gbxPlan
             // 
             gbxPlan.BackColor = Color.White;
+            gbxPlan.Controls.Add(lblPaseLibre);
+            gbxPlan.Controls.Add(chkPaseLibre);
             gbxPlan.Controls.Add(pictureBox2);
             gbxPlan.Controls.Add(lblCasillero);
             gbxPlan.Controls.Add(chkCasillero);
@@ -172,18 +176,38 @@
             gbxPlan.Controls.Add(lblPlan);
             gbxPlan.Controls.Add(cboTurno);
             gbxPlan.Controls.Add(cboPlan);
-            gbxPlan.Location = new Point(6, -5);
+            gbxPlan.Location = new Point(3, 0);
             gbxPlan.Name = "gbxPlan";
-            gbxPlan.Size = new Size(248, 253);
+            gbxPlan.Size = new Size(255, 248);
             gbxPlan.TabIndex = 1;
             gbxPlan.TabStop = false;
+            // 
+            // lblPaseLibre
+            // 
+            lblPaseLibre.AutoSize = true;
+            lblPaseLibre.Location = new Point(142, 19);
+            lblPaseLibre.Name = "lblPaseLibre";
+            lblPaseLibre.Size = new Size(106, 15);
+            lblPaseLibre.TabIndex = 15;
+            lblPaseLibre.Text = "¿Tienes Pase Libre?";
+            lblPaseLibre.Click += lblPaseLibre_Click;
+            // 
+            // chkPaseLibre
+            // 
+            chkPaseLibre.AutoSize = true;
+            chkPaseLibre.Location = new Point(150, 42);
+            chkPaseLibre.Name = "chkPaseLibre";
+            chkPaseLibre.Size = new Size(76, 19);
+            chkPaseLibre.TabIndex = 14;
+            chkPaseLibre.Text = "PaseLibre";
+            chkPaseLibre.UseVisualStyleBackColor = true;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.images__6_;
-            pictureBox2.Location = new Point(7, 136);
+            pictureBox2.Location = new Point(7, 128);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(226, 111);
+            pictureBox2.Size = new Size(238, 114);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 13;
             pictureBox2.TabStop = false;
@@ -191,7 +215,7 @@
             // lblCasillero
             // 
             lblCasillero.AutoSize = true;
-            lblCasillero.Location = new Point(91, 93);
+            lblCasillero.Location = new Point(139, 74);
             lblCasillero.Name = "lblCasillero";
             lblCasillero.Size = new Size(87, 15);
             lblCasillero.TabIndex = 0;
@@ -201,7 +225,7 @@
             // chkCasillero
             // 
             chkCasillero.AutoSize = true;
-            chkCasillero.Location = new Point(91, 111);
+            chkCasillero.Location = new Point(104, 98);
             chkCasillero.Name = "chkCasillero";
             chkCasillero.Size = new Size(145, 19);
             chkCasillero.TabIndex = 0;
@@ -253,7 +277,7 @@
             cboTurno.Items.AddRange(new object[] { "Mañana ", "Tarde", "Noche" });
             cboTurno.Location = new Point(50, 53);
             cboTurno.Name = "cboTurno";
-            cboTurno.Size = new Size(121, 23);
+            cboTurno.Size = new Size(86, 23);
             cboTurno.TabIndex = 7;
             cboTurno.SelectedIndexChanged += cboTurno_SelectedIndexChanged;
             // 
@@ -264,7 +288,7 @@
             cboPlan.Items.AddRange(new object[] { "Musculación ", "Funcional ", "Natación" });
             cboPlan.Location = new Point(50, 16);
             cboPlan.Name = "cboPlan";
-            cboPlan.Size = new Size(121, 23);
+            cboPlan.Size = new Size(86, 23);
             cboPlan.TabIndex = 5;
             // 
             // gbxFormaDePago1
@@ -286,7 +310,7 @@
             pictureBox3.Image = Properties.Resources.images__7_;
             pictureBox3.Location = new Point(6, 109);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(230, 71);
+            pictureBox3.Size = new Size(233, 71);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 9;
             pictureBox3.TabStop = false;
@@ -477,5 +501,7 @@
         private Label lblCuotas;
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
+        private CheckBox chkPaseLibre;
+        private Label lblPaseLibre;
     }
 }
