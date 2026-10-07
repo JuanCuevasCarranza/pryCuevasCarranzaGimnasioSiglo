@@ -26,6 +26,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
     public partial class frmInscripcion : Form
     {
         // Constantes de la aplicación (Precios, edades y recargos)
+
         public const decimal PRECIO_MUSCULACION = 15000m;
         public const decimal PRECIO_FUNCIONAL = 18000m;
         public const decimal PRECIO_NATACION = 22000m;
@@ -44,7 +45,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
         }
 
-        // Checklist: ☐ Al abrir, el formulario respeta el estado inicial del enunciado. (✔ CUMPLIDO)
+        // Checklist: ☐ Al abrir, el formulario respeta el estado inicial del enunciado.
         private void EstadoInicial(object sender, EventArgs e)
         {
             txtNombre.Clear();
@@ -89,7 +90,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
         private void txtMeses_TextChanged(object sender, EventArgs e) { }
         private void lblCasillero_Click(object sender, EventArgs e) { }
 
-        // Checklist: ☐ Cuotas se habilita solo con Tarjeta y arranca en 1. (✔ CUMPLIDO)
+        // Checklist: ☐ Cuotas se habilita solo con Tarjeta y arranca en 1.
         private void rbtTarjeta_CheckedChanged(object sender, EventArgs e)
         {
             if (rbtTarjeta.Checked)
@@ -104,7 +105,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
             }
         }
 
-        // Checklist: ☐ Calcular se habilita y deshabilita correctamente al completar o borrar datos. (✔ CUMPLIDO)
+        // Checklist: ☐ Calcular se habilita y deshabilita correctamente al completar o borrar datos. 
         private void ValidarCamposCompletos(object? sender, EventArgs e)
         {
             if (txtNombre.Text.Trim() != "" && txtEdad.Text.Trim() != "" && txtMeses.Text.Trim() != "")
@@ -198,12 +199,12 @@ namespace pryCuevasCarranzaGimnasioSiglo
             // 5. Cálculo del subtotal
             subtotal = precioMensual * meses;
 
-            // Checklist: ☐ ...un if en un renglón... (✔ CUMPLIDO)
+            // Checklist: ☐ ...un if en un renglón... 
             if (chkCasillero.Checked) precioMensual += PRECIO_CASILLERO;
 
             subtotal = precioMensual * meses;
 
-            // Checklist: ☐ ...un if anidado... (✔ CUMPLIDO)
+            // Checklist: ☐ ...un if anidado... 
             if (edad < 18)
             {
                 porcentajeDescuento = 0.25m;
@@ -252,7 +253,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
             decimal subtotalConDescuentoEdad = subtotal - (subtotal * porcentajeDescuento);
             total = subtotalConDescuentoEdad + (subtotalConDescuentoEdad * porcentajeAjustePago);
 
-            // Checklist: ☐ ...y tres ternarios. (✔ CUMPLIDO - Ternario 1, 2 y 3)
+            // Checklist: ☐ ...y tres ternarios. (- Ternario 1, 2 y 3)
             string categoria = (edad < 18) ? "Menor" : "Mayor"; // Ternario 1
             string formaPagoTexto = rbtEfectivo.Checked ? "Efectivo" : $"Tarjeta en {cboCuotas.SelectedItem?.ToString() ?? "1"} cuotas"; // Ternario 2
             int cuotasElegidas = rbtEfectivo.Checked ? 1 : int.Parse(cboCuotas.SelectedItem?.ToString() ?? "1"); // Ternario 3
@@ -288,7 +289,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
             MessageBox.Show(mensaje, "Resultado de la Inscripción", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Checklist: ☐ Después de mostrar el resultado, el formulario vuelve al estado inicial. (✔ CUMPLIDO)
+            // Checklist: ☐ Después de mostrar el resultado, el formulario vuelve al estado inicial. 
             EstadoInicial(sender, e);
         }
 
@@ -302,7 +303,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
         private void txtEdad_TextChanged(object sender, EventArgs e) { }
         private void txtNombre_TextChanged(object sender, EventArgs e) { }
 
-        // Checklist: ☐ No se pueden escribir letras en Edad ni en Meses; Backspace funciona. (✔ CUMPLIDO)
+        // Checklist: ☐ No se pueden escribir letras en Edad ni en Meses; Backspace funciona.
         private void txtEdad_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
@@ -319,7 +320,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
             }
         }
 
-        // Checklist: ☐ El nombre aparece siempre en mayúsculas. (✔ CUMPLIDO)
+        // Checklist: ☐ El nombre aparece siempre en mayúsculas
         private void txtNombre_KeyPress(object? sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != (char)Keys.Back)
@@ -338,6 +339,29 @@ namespace pryCuevasCarranzaGimnasioSiglo
         private void frmInscripcion_KeyPress(object sender, KeyPressEventArgs e) { }
 
         private void lblPaseLibre_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDNI_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancela la acción si no es un número
+            }
+        }
+
+        private void txtDNI_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -52,7 +52,7 @@
             btnRegistrarse.Name = "btnRegistrarse";
             btnRegistrarse.Size = new Size(461, 68);
             btnRegistrarse.TabIndex = 1;
-            btnRegistrarse.Text = "[¡REGISTRATE!]";
+            btnRegistrarse.Text = "[¡&REGISTRATE!]";
             btnRegistrarse.UseVisualStyleBackColor = false;
             btnRegistrarse.Click += btnRegistrarse_Click;
             // 
