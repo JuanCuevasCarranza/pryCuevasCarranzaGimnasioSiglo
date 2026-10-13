@@ -8,6 +8,8 @@ using System.Windows.Forms;
 
 public struct SOCIO
 {
+    public string Apellido;
+    public string Dni;
     public string Nombre;
     public int Edad;
     public string Categoria;
@@ -26,7 +28,6 @@ namespace pryCuevasCarranzaGimnasioSiglo
     public partial class frmInscripcion : Form
     {
         // Constantes de la aplicación (Precios, edades y recargos)
-
         public const decimal PRECIO_MUSCULACION = 15000m;
         public const decimal PRECIO_FUNCIONAL = 18000m;
         public const decimal PRECIO_NATACION = 22000m;
@@ -42,17 +43,19 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
         public class Configuracion
         {
-
         }
 
-        // Checklist: ☐ Al abrir, el formulario respeta el estado inicial del enunciado.
-        private void EstadoInicial(object sender, EventArgs e)
+        // Estado inicial de la interfaz
+        private void EstadoInicial(object? sender = null, EventArgs? e = null)
         {
             txtNombre.Clear();
+            txtApellido.Clear();
+            txtDNI.Clear();
             txtEdad.Clear();
             txtMeses.Text = "1";
             chkEstudiante.Checked = false;
             chkCasillero.Checked = false;
+            chkPaseLibre.Checked = false;
 
             if (cboPlan.Items.Count > 0) cboPlan.SelectedIndex = 0;
             if (cboTurno.Items.Count > 0) cboTurno.SelectedIndex = 0;
@@ -65,32 +68,19 @@ namespace pryCuevasCarranzaGimnasioSiglo
             txtNombre.Focus();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e) { }
-        private void lblPregunta_Click(object sender, EventArgs e) { }
-        private void lblEdad_Click(object sender, EventArgs e) { }
-        private void cboTurno_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void gbxFormaDePago_Enter(object sender, EventArgs e) { }
-
         private void frmInscripcion_Load(object sender, EventArgs e)
         {
             EstadoInicial(sender, e);
             txtNombre.KeyPress += txtNombre_KeyPress;
 
-            // Vinculamos dinámicamente los eventos TextChanged para habilitar/deshabilitar Calcular en tiempo real
+            // Vinculamos dinámicamente los eventos TextChanged para habilitar/deshabilitar Calcular
             txtNombre.TextChanged += ValidarCamposCompletos;
+            txtApellido.TextChanged += ValidarCamposCompletos;
+            txtDNI.TextChanged += ValidarCamposCompletos;
             txtEdad.TextChanged += ValidarCamposCompletos;
             txtMeses.TextChanged += ValidarCamposCompletos;
         }
 
-        private void tbpDatosPersonales_Click(object sender, EventArgs e) { }
-        private void gbxPlan_Enter(object sender, EventArgs e) { }
-        private void pictureBox2_Click(object sender, EventArgs e) { }
-        private void pictureBox1_Click(object sender, EventArgs e) { }
-        private void checkBox1_CheckedChanged(object sender, EventArgs e) { }
-        private void txtMeses_TextChanged(object sender, EventArgs e) { }
-        private void lblCasillero_Click(object sender, EventArgs e) { }
-
-        // Checklist: ☐ Cuotas se habilita solo con Tarjeta y arranca en 1.
         private void rbtTarjeta_CheckedChanged(object sender, EventArgs e)
         {
             if (rbtTarjeta.Checked)
@@ -105,10 +95,9 @@ namespace pryCuevasCarranzaGimnasioSiglo
             }
         }
 
-        // Checklist: ☐ Calcular se habilita y deshabilita correctamente al completar o borrar datos. 
         private void ValidarCamposCompletos(object? sender, EventArgs e)
         {
-            if (txtNombre.Text.Trim() != "" && txtEdad.Text.Trim() != "" && txtMeses.Text.Trim() != "")
+            if (txtNombre.Text.Trim() != "" && txtApellido.Text.Trim() != "" && txtDNI.Text.Trim() != "" && txtEdad.Text.Trim() != "" && txtMeses.Text.Trim() != "")
             {
                 btnCalcular.Enabled = true;
             }
@@ -121,20 +110,21 @@ namespace pryCuevasCarranzaGimnasioSiglo
         private void btnCalcular_Click(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text;
+            string apellido = txtApellido.Text;
+            string dni = txtDNI.Text;
             int edad = int.Parse(txtEdad.Text);
             int meses = int.Parse(txtMeses.Text);
 
+            // Validaciones de rango
             if (edad < EDAD_MINIMA)
             {
-                MessageBox.Show("El socio es menor de edad mínima (14 años). No puede inscribirse.",
-                                "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El socio es menor de edad mínima (14 años). No puede inscribirse.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (meses < 1 || meses > 12)
             {
-                MessageBox.Show("La cantidad de meses debe estar comprendida entre 1 y 12.",
-                                "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("La cantidad de meses debe estar comprendida entre 1 y 12.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -147,7 +137,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
             string planElegido = cboPlan.SelectedItem?.ToString()?.Trim() ?? "";
 
-            // 1. Switch de plan 
+            // 1. Switch de plan
             switch (planElegido.ToLower())
             {
                 case string p when p.Contains("musculaci"):
@@ -193,18 +183,13 @@ namespace pryCuevasCarranzaGimnasioSiglo
                     break;
             }
 
-            // 4. If en un renglón para el casillero 
+            // 4. Adicional casillero (if en una sola línea)
             if (chkCasillero.Checked) precioMensual += PRECIO_CASILLERO;
 
             // 5. Cálculo del subtotal
             subtotal = precioMensual * meses;
 
-            // Checklist: ☐ ...un if en un renglón... 
-            if (chkCasillero.Checked) precioMensual += PRECIO_CASILLERO;
-
-            subtotal = precioMensual * meses;
-
-            // Checklist: ☐ ...un if anidado... 
+            // 6. Descuento por edad / estudiante (if anidado)
             if (edad < 18)
             {
                 porcentajeDescuento = 0.25m;
@@ -228,6 +213,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
                 }
             }
 
+            // 7. Ajuste por forma de pago
             if (rbtEfectivo.Checked)
             {
                 porcentajeAjustePago = -0.10m;
@@ -253,15 +239,18 @@ namespace pryCuevasCarranzaGimnasioSiglo
             decimal subtotalConDescuentoEdad = subtotal - (subtotal * porcentajeDescuento);
             total = subtotalConDescuentoEdad + (subtotalConDescuentoEdad * porcentajeAjustePago);
 
-            // Checklist: ☐ ...y tres ternarios. (- Ternario 1, 2 y 3)
+            // 8. Operadores ternarios
             string categoria = (edad < 18) ? "Menor" : "Mayor"; // Ternario 1
             string formaPagoTexto = rbtEfectivo.Checked ? "Efectivo" : $"Tarjeta en {cboCuotas.SelectedItem?.ToString() ?? "1"} cuotas"; // Ternario 2
             int cuotasElegidas = rbtEfectivo.Checked ? 1 : int.Parse(cboCuotas.SelectedItem?.ToString() ?? "1"); // Ternario 3
 
             valorCuota = rbtEfectivo.Checked ? total : total / cuotasElegidas;
 
+            // 9. Carga del struct SOCIO
             SOCIO unSocio;
             unSocio.Nombre = nombre;
+            unSocio.Apellido = apellido;
+            unSocio.Dni = dni;
             unSocio.Edad = edad;
             unSocio.Categoria = categoria;
             unSocio.Plan = planElegido;
@@ -277,7 +266,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
             string estudianteTextoStruct = unSocio.Estudiante ? "Sí" : "No";
 
             string mensaje = $"--- RESUMEN DE INSCRIPCIÓN (SOCIO) ---\n" +
-                             $"Socio: {unSocio.Nombre} ({unSocio.Categoria})\n" +
+                             $"Socio: {unSocio.Apellido} {unSocio.Nombre} - DNI: {unSocio.Dni} ({unSocio.Categoria})\n" +
                              $"Edad: {unSocio.Edad} años (Estudiante: {estudianteTextoStruct})\n" +
                              $"Plan: {unSocio.Plan} - Turno: {unSocio.HorarioTurno}\n" +
                              $"Meses: {unSocio.Meses} | Casillero: {casilleroTextoStruct}\n" +
@@ -289,21 +278,16 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
             MessageBox.Show(mensaje, "Resultado de la Inscripción", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Checklist: ☐ Después de mostrar el resultado, el formulario vuelve al estado inicial. 
+            // Restablecer el formulario al estado inicial
             EstadoInicial(sender, e);
         }
-
-        private void lblCuotas_Click(object sender, EventArgs e) { }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             EstadoInicial(sender, e);
         }
 
-        private void txtEdad_TextChanged(object sender, EventArgs e) { }
-        private void txtNombre_TextChanged(object sender, EventArgs e) { }
-
-        // Checklist: ☐ No se pueden escribir letras en Edad ni en Meses; Backspace funciona.
+        // Filtros de ingreso KeyPress
         private void txtEdad_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
@@ -320,7 +304,6 @@ namespace pryCuevasCarranzaGimnasioSiglo
             }
         }
 
-        // Checklist: ☐ El nombre aparece siempre en mayúsculas
         private void txtNombre_KeyPress(object? sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != (char)Keys.Back)
@@ -336,34 +319,51 @@ namespace pryCuevasCarranzaGimnasioSiglo
             }
         }
 
-        private void frmInscripcion_KeyPress(object sender, KeyPressEventArgs e) { }
-
-        private void lblPaseLibre_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtDNI_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true; // Cancela la acción si no es un número
+                e.Handled = true;
             }
         }
 
-        private void txtDNI_TextChanged(object sender, EventArgs e)
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                if (char.IsLower(e.KeyChar))
+                {
+                    e.KeyChar = char.ToUpper(e.KeyChar);
+                }
+            }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        // Manejadores de eventos del Diseñador (vacíos para preservar vinculación con Designer.cs)
+        private void groupBox1_Enter(object sender, EventArgs e) { }
+        private void lblPregunta_Click(object sender, EventArgs e) { }
+        private void lblEdad_Click(object sender, EventArgs e) { }
+        private void cboTurno_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void gbxFormaDePago_Enter(object sender, EventArgs e) { }
+        private void tbpDatosPersonales_Click(object sender, EventArgs e) { }
+        private void gbxPlan_Enter(object sender, EventArgs e) { }
+        private void pictureBox2_Click(object sender, EventArgs e) { }
+        private void pictureBox1_Click(object sender, EventArgs e) { }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e) { }
+        private void txtMeses_TextChanged(object sender, EventArgs e) { }
+        private void lblCasillero_Click(object sender, EventArgs e) { }
+        private void lblCuotas_Click(object sender, EventArgs e) { }
+        private void txtEdad_TextChanged(object sender, EventArgs e) { }
+        private void txtNombre_TextChanged(object sender, EventArgs e) { }
+        private void frmInscripcion_KeyPress(object sender, KeyPressEventArgs e) { }
+        private void lblPaseLibre_Click(object sender, EventArgs e) { }
+        private void pictureBox1_Click_1(object sender, EventArgs e) { }
+        private void txtDNI_TextChanged(object sender, EventArgs e) { }
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
+        private void textBox1_TextChanged_1(object sender, EventArgs e) { }
     }
 }

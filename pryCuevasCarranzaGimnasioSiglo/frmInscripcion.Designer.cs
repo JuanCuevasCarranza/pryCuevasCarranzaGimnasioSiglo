@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInscripcion));
             gbxDatosPersonales = new GroupBox();
-            textBox1 = new TextBox();
+            txtApellido = new TextBox();
             txtDNI = new TextBox();
             lblDNI = new Label();
             lblApellido = new Label();
@@ -77,7 +77,7 @@
             // 
             gbxDatosPersonales.BackColor = Color.Transparent;
             gbxDatosPersonales.BackgroundImage = Properties.Resources.images__6_;
-            gbxDatosPersonales.Controls.Add(textBox1);
+            gbxDatosPersonales.Controls.Add(txtApellido);
             gbxDatosPersonales.Controls.Add(txtDNI);
             gbxDatosPersonales.Controls.Add(lblDNI);
             gbxDatosPersonales.Controls.Add(lblApellido);
@@ -94,12 +94,15 @@
             gbxDatosPersonales.TabStop = false;
             gbxDatosPersonales.Enter += groupBox1_Enter;
             // 
-            // textBox1
+            // txtApellido
             // 
-            textBox1.Location = new Point(7, 81);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 7;
+            txtApellido.Location = new Point(7, 81);
+            txtApellido.MaxLength = 30;
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(100, 23);
+            txtApellido.TabIndex = 7;
+            txtApellido.TextChanged += textBox1_TextChanged_1;
+            txtApellido.KeyPress += txtApellido_KeyPress;
             // 
             // txtDNI
             // 
@@ -135,7 +138,7 @@
             // 
             lblPregunta.AutoSize = true;
             lblPregunta.ForeColor = SystemColors.Control;
-            lblPregunta.Location = new Point(3, 203);
+            lblPregunta.Location = new Point(3, 217);
             lblPregunta.Name = "lblPregunta";
             lblPregunta.Size = new Size(96, 15);
             lblPregunta.TabIndex = 3;
@@ -167,7 +170,7 @@
             // 
             chkEstudiante.AutoSize = true;
             chkEstudiante.ForeColor = SystemColors.ControlLight;
-            chkEstudiante.Location = new Point(9, 221);
+            chkEstudiante.Location = new Point(8, 235);
             chkEstudiante.Name = "chkEstudiante";
             chkEstudiante.Size = new Size(35, 19);
             chkEstudiante.TabIndex = 3;
@@ -219,9 +222,9 @@
             lblPaseLibre.AutoSize = true;
             lblPaseLibre.BackColor = Color.Transparent;
             lblPaseLibre.ForeColor = SystemColors.Control;
-            lblPaseLibre.Location = new Point(3, 151);
+            lblPaseLibre.Location = new Point(63, 151);
             lblPaseLibre.Name = "lblPaseLibre";
-            lblPaseLibre.Size = new Size(107, 15);
+            lblPaseLibre.Size = new Size(106, 15);
             lblPaseLibre.TabIndex = 15;
             lblPaseLibre.Text = "¿Tienes Pase Libre?";
             lblPaseLibre.Click += lblPaseLibre_Click;
@@ -231,7 +234,7 @@
             chkPaseLibre.AutoSize = true;
             chkPaseLibre.BackColor = Color.Transparent;
             chkPaseLibre.ForeColor = SystemColors.Control;
-            chkPaseLibre.Location = new Point(6, 169);
+            chkPaseLibre.Location = new Point(64, 169);
             chkPaseLibre.Name = "chkPaseLibre";
             chkPaseLibre.Size = new Size(76, 19);
             chkPaseLibre.TabIndex = 14;
@@ -243,7 +246,7 @@
             lblCasillero.AutoSize = true;
             lblCasillero.BackColor = Color.Transparent;
             lblCasillero.ForeColor = SystemColors.Control;
-            lblCasillero.Location = new Point(3, 205);
+            lblCasillero.Location = new Point(63, 205);
             lblCasillero.Name = "lblCasillero";
             lblCasillero.Size = new Size(87, 15);
             lblCasillero.TabIndex = 0;
@@ -255,7 +258,7 @@
             chkCasillero.AutoSize = true;
             chkCasillero.BackColor = Color.Transparent;
             chkCasillero.ForeColor = SystemColors.Control;
-            chkCasillero.Location = new Point(6, 223);
+            chkCasillero.Location = new Point(63, 223);
             chkCasillero.Name = "chkCasillero";
             chkCasillero.Size = new Size(145, 19);
             chkCasillero.TabIndex = 0;
@@ -291,7 +294,7 @@
             lblTurno.ForeColor = SystemColors.Control;
             lblTurno.Location = new Point(15, 73);
             lblTurno.Name = "lblTurno";
-            lblTurno.Size = new Size(39, 15);
+            lblTurno.Size = new Size(38, 15);
             lblTurno.TabIndex = 7;
             lblTurno.Text = "Turno";
             // 
@@ -389,7 +392,7 @@
             rbtTarjeta.AutoSize = true;
             rbtTarjeta.Location = new Point(6, 60);
             rbtTarjeta.Name = "rbtTarjeta";
-            rbtTarjeta.Size = new Size(60, 19);
+            rbtTarjeta.Size = new Size(59, 19);
             rbtTarjeta.TabIndex = 1;
             rbtTarjeta.TabStop = true;
             rbtTarjeta.Text = "Tarjeta";
@@ -530,6 +533,6 @@
         private TextBox txtDNI;
         private Label lblDNI;
         private Label lblApellido;
-        private TextBox textBox1;
+        private TextBox txtApellido;
     }
 }
