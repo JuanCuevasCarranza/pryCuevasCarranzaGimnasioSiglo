@@ -37,10 +37,12 @@ namespace pryCuevasCarranzaGimnasioSiglo
         public const decimal PRECIO_PASE_LIBRE = 30000m;
 
 
-        string[] arrayClientes = new string[3];
-        int indiceCliente = 0;
+        //DECLARAR  UN ARRAY 1 DIMENSION - VECTOR
 
-        //arrayClientes = new string[]
+        string[] arrayClientes = new string[3];
+
+        //INICIALIZAR ARRAY
+        int indiceCliente = 0;
 
         public frmInscripcion()
         {
@@ -284,7 +286,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
             MessageBox.Show(mensaje, "Resultado de la Inscripción", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //grabar un array 1 dimension
+            //GRABAR UN ARRAY 1 DIMENSION
             arrayClientes[indiceCliente] = mensaje;
             indiceCliente++;
 
