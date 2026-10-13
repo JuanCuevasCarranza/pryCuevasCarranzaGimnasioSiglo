@@ -224,9 +224,9 @@
             lblPaseLibre.ForeColor = SystemColors.Control;
             lblPaseLibre.Location = new Point(63, 151);
             lblPaseLibre.Name = "lblPaseLibre";
-            lblPaseLibre.Size = new Size(106, 15);
+            lblPaseLibre.Size = new Size(113, 15);
             lblPaseLibre.TabIndex = 15;
-            lblPaseLibre.Text = "¿Tienes Pase Libre?";
+            lblPaseLibre.Text = "¿Quieres Pase Libre?";
             lblPaseLibre.Click += lblPaseLibre_Click;
             // 
             // chkPaseLibre
