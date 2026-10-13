@@ -53,7 +53,7 @@
             cboPlan = new ComboBox();
             gbxFormaDePago1 = new GroupBox();
             lstClientes = new ListBox();
-            button1 = new Button();
+            btnConsulta = new Button();
             btnCalcular = new Button();
             lblCuotas = new Label();
             cboCuotas = new ComboBox();
@@ -91,7 +91,7 @@
             gbxDatosPersonales.Controls.Add(txtNombre);
             gbxDatosPersonales.Location = new Point(0, -9);
             gbxDatosPersonales.Name = "gbxDatosPersonales";
-            gbxDatosPersonales.Size = new Size(258, 260);
+            gbxDatosPersonales.Size = new Size(272, 260);
             gbxDatosPersonales.TabIndex = 0;
             gbxDatosPersonales.TabStop = false;
             gbxDatosPersonales.Enter += groupBox1_Enter;
@@ -215,7 +215,7 @@
             gbxPlan.Controls.Add(cboPlan);
             gbxPlan.Location = new Point(3, -9);
             gbxPlan.Name = "gbxPlan";
-            gbxPlan.Size = new Size(248, 257);
+            gbxPlan.Size = new Size(255, 257);
             gbxPlan.TabIndex = 1;
             gbxPlan.TabStop = false;
             // 
@@ -336,14 +336,14 @@
             // 
             gbxFormaDePago1.BackgroundImage = Properties.Resources.images__6_;
             gbxFormaDePago1.Controls.Add(lstClientes);
-            gbxFormaDePago1.Controls.Add(button1);
+            gbxFormaDePago1.Controls.Add(btnConsulta);
             gbxFormaDePago1.Controls.Add(btnCalcular);
             gbxFormaDePago1.Controls.Add(lblCuotas);
             gbxFormaDePago1.Controls.Add(cboCuotas);
             gbxFormaDePago1.Controls.Add(gbxFormaDePago2);
             gbxFormaDePago1.Location = new Point(3, -7);
             gbxFormaDePago1.Name = "gbxFormaDePago1";
-            gbxFormaDePago1.Size = new Size(245, 218);
+            gbxFormaDePago1.Size = new Size(255, 218);
             gbxFormaDePago1.TabIndex = 2;
             gbxFormaDePago1.TabStop = false;
             gbxFormaDePago1.Enter += gbxFormaDePago_Enter;
@@ -356,15 +356,15 @@
             lstClientes.Size = new Size(230, 79);
             lstClientes.TabIndex = 8;
             // 
-            // button1
+            // btnConsulta
             // 
-            button1.Location = new Point(86, 110);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 7;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnConsulta.Location = new Point(86, 110);
+            btnConsulta.Name = "btnConsulta";
+            btnConsulta.Size = new Size(75, 23);
+            btnConsulta.TabIndex = 7;
+            btnConsulta.Text = "Consulta";
+            btnConsulta.UseVisualStyleBackColor = true;
+            btnConsulta.Click += btnConsulta_Click;
             // 
             // btnCalcular
             // 
@@ -438,7 +438,7 @@
             btnLimpiar.ForeColor = SystemColors.ControlText;
             btnLimpiar.Location = new Point(3, 208);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(245, 40);
+            btnLimpiar.Size = new Size(255, 43);
             btnLimpiar.TabIndex = 3;
             btnLimpiar.Text = "&Limpiar";
             btnLimpiar.UseVisualStyleBackColor = true;
@@ -557,6 +557,6 @@
         private Label lblApellido;
         private TextBox txtApellido;
         private ListBox lstClientes;
-        private Button button1;
+        private Button btnConsulta;
     }
 }

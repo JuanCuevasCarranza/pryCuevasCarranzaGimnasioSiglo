@@ -39,7 +39,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
         //DECLARAR  UN ARRAY 1 DIMENSION - VECTOR
 
-        string[] arrayClientes = new string[3];
+        string[] arrayClientes = new string[100];
 
         //INICIALIZAR ARRAY
         int indiceCliente = 0;
@@ -383,13 +383,21 @@ namespace pryCuevasCarranzaGimnasioSiglo
         private void textBox1_TextChanged(object sender, EventArgs e) { }
         private void textBox1_TextChanged_1(object sender, EventArgs e) { }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnConsulta_Click(object sender, EventArgs e)
         {
-            //RECORRER TODO EL ARRAY
-            for (int i = 0; i < arrayClientes.Length; i++)
+            if (arrayClientes[0] == null)
             {
-                lstClientes.Items.Add(arrayClientes[indiceCliente]);
+
             }
+            else
+            {
+                //RECORRER TODO EL ARRAY
+                for (int i = 0; i < arrayClientes.Length && arrayClientes[i] != null; i++)
+                {
+                    lstClientes.Items.Add(arrayClientes[i]);
+                }
+            }
+            
         }
     }
 }
