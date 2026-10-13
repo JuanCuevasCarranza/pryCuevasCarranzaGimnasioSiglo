@@ -52,6 +52,8 @@
             cboTurno = new ComboBox();
             cboPlan = new ComboBox();
             gbxFormaDePago1 = new GroupBox();
+            lstClientes = new ListBox();
+            button1 = new Button();
             btnCalcular = new Button();
             lblCuotas = new Label();
             cboCuotas = new ComboBox();
@@ -294,7 +296,7 @@
             lblTurno.ForeColor = SystemColors.Control;
             lblTurno.Location = new Point(15, 73);
             lblTurno.Name = "lblTurno";
-            lblTurno.Size = new Size(38, 15);
+            lblTurno.Size = new Size(39, 15);
             lblTurno.TabIndex = 7;
             lblTurno.Text = "Turno";
             // 
@@ -333,16 +335,36 @@
             // gbxFormaDePago1
             // 
             gbxFormaDePago1.BackgroundImage = Properties.Resources.images__6_;
+            gbxFormaDePago1.Controls.Add(lstClientes);
+            gbxFormaDePago1.Controls.Add(button1);
             gbxFormaDePago1.Controls.Add(btnCalcular);
             gbxFormaDePago1.Controls.Add(lblCuotas);
             gbxFormaDePago1.Controls.Add(cboCuotas);
             gbxFormaDePago1.Controls.Add(gbxFormaDePago2);
             gbxFormaDePago1.Location = new Point(3, -7);
             gbxFormaDePago1.Name = "gbxFormaDePago1";
-            gbxFormaDePago1.Size = new Size(245, 193);
+            gbxFormaDePago1.Size = new Size(245, 218);
             gbxFormaDePago1.TabIndex = 2;
             gbxFormaDePago1.TabStop = false;
             gbxFormaDePago1.Enter += gbxFormaDePago_Enter;
+            // 
+            // lstClientes
+            // 
+            lstClientes.FormattingEnabled = true;
+            lstClientes.Location = new Point(6, 139);
+            lstClientes.Name = "lstClientes";
+            lstClientes.Size = new Size(230, 79);
+            lstClientes.TabIndex = 8;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(86, 110);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 7;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // btnCalcular
             // 
@@ -392,7 +414,7 @@
             rbtTarjeta.AutoSize = true;
             rbtTarjeta.Location = new Point(6, 60);
             rbtTarjeta.Name = "rbtTarjeta";
-            rbtTarjeta.Size = new Size(59, 19);
+            rbtTarjeta.Size = new Size(60, 19);
             rbtTarjeta.TabIndex = 1;
             rbtTarjeta.TabStop = true;
             rbtTarjeta.Text = "Tarjeta";
@@ -414,9 +436,9 @@
             // 
             btnLimpiar.BackgroundImage = Properties.Resources.images__7_;
             btnLimpiar.ForeColor = SystemColors.ControlText;
-            btnLimpiar.Location = new Point(3, 186);
+            btnLimpiar.Location = new Point(3, 208);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(245, 62);
+            btnLimpiar.Size = new Size(245, 40);
             btnLimpiar.TabIndex = 3;
             btnLimpiar.Text = "&Limpiar";
             btnLimpiar.UseVisualStyleBackColor = true;
@@ -534,5 +556,7 @@
         private Label lblDNI;
         private Label lblApellido;
         private TextBox txtApellido;
+        private ListBox lstClientes;
+        private Button button1;
     }
 }

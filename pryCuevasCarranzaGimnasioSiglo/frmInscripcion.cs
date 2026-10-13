@@ -36,6 +36,12 @@ namespace pryCuevasCarranzaGimnasioSiglo
         public const decimal RECARGO_SEIS_CUOTAS = 0.20m;
         public const decimal PRECIO_PASE_LIBRE = 30000m;
 
+
+        string[] arrayClientes = new string[3];
+        int indiceCliente = 0;
+
+        //arrayClientes = new string[]
+
         public frmInscripcion()
         {
             InitializeComponent();
@@ -278,6 +284,15 @@ namespace pryCuevasCarranzaGimnasioSiglo
 
             MessageBox.Show(mensaje, "Resultado de la Inscripción", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            //grabar un array 1 dimension
+            arrayClientes[indiceCliente] = mensaje;
+            indiceCliente++;
+
+            if (indiceCliente == arrayClientes.Length)
+            {
+                btnCalcular.Enabled = false;
+            }
+
             // Restablecer el formulario al estado inicial
             EstadoInicial(sender, e);
         }
@@ -343,7 +358,7 @@ namespace pryCuevasCarranzaGimnasioSiglo
             }
         }
 
-        // Manejadores de eventos del Diseñador (vacíos para preservar vinculación con Designer.cs)
+        // Manejadores de eventos del Diseñador 
         private void groupBox1_Enter(object sender, EventArgs e) { }
         private void lblPregunta_Click(object sender, EventArgs e) { }
         private void lblEdad_Click(object sender, EventArgs e) { }
@@ -365,5 +380,14 @@ namespace pryCuevasCarranzaGimnasioSiglo
         private void txtDNI_TextChanged(object sender, EventArgs e) { }
         private void textBox1_TextChanged(object sender, EventArgs e) { }
         private void textBox1_TextChanged_1(object sender, EventArgs e) { }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //RECORRER TODO EL ARRAY
+            for (int i = 0; i < arrayClientes.Length; i++)
+            {
+                lstClientes.Items.Add(arrayClientes[indiceCliente]);
+            }
+        }
     }
 }
